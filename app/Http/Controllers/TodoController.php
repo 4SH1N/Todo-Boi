@@ -33,4 +33,22 @@ class TodoController extends Controller
 
         return redirect()->route('todos.index');
     }
+
+    public function edit(Todo $todo)
+    {
+        return view('todos.edit', ['todo' => $todo]);
+    }
+
+    public function update(Request $request, Todo $todo)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'completed' => 'boolean'
+        ]);
+        $validated['completed'] = $request->boolean('completed');
+        $todo->update($validated);
+
+        return redirect()->route('todos.show', $todo);
+    }
 }
