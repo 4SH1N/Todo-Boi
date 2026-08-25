@@ -17,11 +17,17 @@
     <div>
         <label for="title">Title</label>
         <input type="text"  id="title" name="title" value="{{ old('title') }}" >
+        @error('title')
+            {{ $message }}
+        @enderror
     </div>
 
     <div>
         <label for="description">Description</label>
         <textarea id="description" name="description" rows="20" cols="20">{{ old('description') }}</textarea>
+        @error('description')
+            {{ $message }}
+        @enderror
     </div>
 
     <button type="submit">Create Todo</button>
