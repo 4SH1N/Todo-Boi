@@ -11,6 +11,4 @@ Route::get('/', function () {
 
 Route::get('/todos', [TodoController::class, 'index']);
 
-Route::get('/todos/{todo}', function (Todo $todo) {
-    return $todo;
-});
+Route::get('/todos/{todo}', [TodoController::class, 'show']);
