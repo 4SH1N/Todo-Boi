@@ -9,6 +9,6 @@ Route::get('/', function () {
     return 'Todo-Boi';
 });
 
-Route::get('/todos', [TodoController::class, 'index']);
+Route::get('/todos', [TodoController::class, 'index'])->name('todos.index');
 
-Route::get('/todos/{todo}', [TodoController::class, 'show']);
+Route::get('/todos/{todo}', [TodoController::class, 'show'])->name('todos.show');
