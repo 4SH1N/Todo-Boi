@@ -3,5 +3,13 @@
 <p>Status: {{ $todo->completed ? 'Completed' : 'Pending' }}</p>
 
 <a href="{{ route('todos.edit', $todo) }}" class="mb-3">Edit</a>
+
+<form method="POST" action="{{ route('todos.destroy', $todo) }}">
+    @csrf
+    @method('DELETE')
+
+    <button type="submit">Delete</button>
+</form>
+
 <a href="{{ route('todos.index') }}">Back to Todos</a>
 

@@ -51,4 +51,10 @@ class TodoController extends Controller
 
         return redirect()->route('todos.show', $todo);
     }
+
+    public function destroy(Todo $todo)
+    {
+        $todo->delete();
+        return redirect()->route('todos.index');
+    }
 }
