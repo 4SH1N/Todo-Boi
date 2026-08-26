@@ -23,4 +23,6 @@ Route::get('/', function () {
 
 # Route::delete('/todos/{todo}', [TodoController::class, 'destroy'])->name('todos.destroy');
 
-Route::resource('todos', TodoController::class)->middleware('todo.access');
+# Route::resource('todos', TodoController::class)->middleware('todo.access');
+
+Route::resource('todos', TodoController::class);

@@ -27,7 +27,8 @@ class TodoController extends Controller
     public function store(TodoRequest $request)
     {
         Todo::create($request->validated());
-        return redirect()->route('todos.index');
+        # return redirect()->route('todos.index');
+        return redirect()->route('todos.index')->with('success', 'Todo Created successfuly.');
     }
 
     public function edit(Todo $todo)
@@ -41,12 +42,12 @@ class TodoController extends Controller
         $validated['completed'] = $request->boolean('completed');
         $todo->update($validated);
 
-        return redirect()->route('todos.show', $todo);
+        return redirect()->route('todos.show', $todo)->with('success', 'Todo updated successfuly');
     }
 
     public function destroy(Todo $todo)
     {
         $todo->delete();
-        return redirect()->route('todos.index');
+        return redirect()->route('todos.index')->with('success', 'Todo deleted successfully');
     }
 }
