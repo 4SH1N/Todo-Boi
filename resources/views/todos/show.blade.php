@@ -1,4 +1,9 @@
 <h1 class="mb-2">{{ $todo->title }}</h1>
+
+@if (session('success'))
+    <p class="mb-5 text-green-600 text-3xl">{{ session('success') }}</p>
+@endif
+
 <p class="mb-2">{{ $todo->description }}</p>
 <p>Status: {{ $todo->completed ? 'Completed' : 'Pending' }}</p>
 
