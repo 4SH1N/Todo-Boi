@@ -16,6 +16,16 @@ class TodoRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'completed' => $this->boolean('completed'),
+        ]);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, ValidationRule|array<mixed>|string>
@@ -23,9 +33,9 @@ class TodoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' =>  'required|string|max:255',
+            'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'completed' => 'boolean'
+            'completed' => 'boolean',
         ];
     }
 }

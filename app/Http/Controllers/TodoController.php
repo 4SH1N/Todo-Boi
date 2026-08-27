@@ -11,7 +11,8 @@ class TodoController extends Controller
     public function index()
     {
         $todos = Todo::all();
-        return view('todos.index', ['todos' => $todos]);
+        # return view('todos.index', ['todos' => $todos]);
+        return view('todos.index', compact('todos'));
     }
 
     public function show(Todo $todo)
@@ -38,10 +39,7 @@ class TodoController extends Controller
 
     public function update(TodoRequest $request, Todo $todo)
     {
-        $validated = $request->validated();
-        $validated['completed'] = $request->boolean('completed');
-        $todo->update($validated);
-
+        $todo->update($request->validated());
         return redirect()->route('todos.show', $todo)->with('success', 'Todo updated successfuly');
     }
 
